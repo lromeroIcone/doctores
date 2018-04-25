@@ -435,7 +435,7 @@ $('#modalD').iziModal('open');
 	url: "http://www.icone-solutions.com/doct/sqlOP.php",
 	type: "POST",
 	
-           data: {pl:pl},
+        data: {pl:pl},
 	async: false,
 	success: function(data){
 		console.log(data);
@@ -517,6 +517,8 @@ $('#modalD').iziModal('open');
     
     function pay(){ //pago con tarjeta
         var form = new FormData($("#payForm")[0]);
+        var mcon = document.getElementById("mcon").val();
+        var doc = document.getElementById("doctP").val();
         var horario= $("#default_datetimepicker").val().toString().split(" ");
         var inputr = document.getElementById("radiograf"),
         inputre = document.getElementById("recetaf"),
@@ -528,8 +530,8 @@ $('#modalD').iziModal('open');
         form.append("recipe",inputre.files[0]);
         form.append("elab",file = inpute.files[0]);
         form.append("patient",localStorage.getItem("usi"));
-        form.append("doct",document.getElementById("doctP"));
-        form.append("mcon",document.getElementById("mcon"));
+        form.append("doct",doc);
+        form.append("mcon",mcon);
         $.ajax({
             url: "http://www.icone-solutions.com/doct/conekta.php",
             type: "POST",
