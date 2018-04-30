@@ -799,8 +799,8 @@ $('#modalD').iziModal('open');
 }
 
 function register(){
-    	var form = new FormData($("#regForm")[0]);
-    	$.ajax({
+    var form = new FormData($("#regForm")[0]);
+    $.ajax({
 	url: "http://www.icone-solutions.com/doct/sqlOP.php",
 	type: "POST",
 	data: form,
@@ -809,12 +809,12 @@ function register(){
 	processData:false,
 	success: function(data){
 	    if(!isNaN(data)){
-	    	var datos = data.toString().split(",");
-	    	if($("#tipoR").val()=="pacientes"){
-	    		localStorage.setItem("tipo","pac");
-	    	}else{
-	    		localStorage.setItem("tipo","doc");
-	    	}
+            var datos = data.toString().split(",");
+            if($("#tipoR").val()=="pacientes"){
+                    localStorage.setItem("tipo","pac");
+            }else{
+                    localStorage.setItem("tipo","doc");
+            }
             swal("Listo","Tu usuario ha sido registrado exitosamente.","success");
             localStorage.setItem("user",$("#mailR").val());
             localStorage.setItem("usi",data.toString());
@@ -823,16 +823,17 @@ function register(){
 
 
 	    }else{
-           swal("Error",data.toString(),"error");
+                //swal("Error",data.toString(),"error");
+                swal("Error","Este usuario ya ha sido registrado.","error");
 	    }
 	    $("#rega").prop("disabled",false);
-	    },
-	    error: function(){
-	    	swal("Error","Actualmente tu dispositivo no cuenta con una conexión a internet","error");
-	    }
+        },
+        error: function(){
+            swal("Error","Actualmente tu dispositivo no cuenta con una conexión a internet","error");
+        }
 
-        });
-    }
+    });
+}
     
     function cancelC(idc){
     	$.ajax({

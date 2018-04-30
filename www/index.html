@@ -62,18 +62,18 @@
         <center><img src="img/logo.jpg" width="150" ></center>
         <div class="ui-content shadowu">
             <form id="regForm" >
-                <input type="text" class="inputg" placeholder="Nombre" data-clear-btn="true" name="userR" id="nombre" value="">
+                <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="userR" id="nombre" value="" required>
                 <br />
-                <input type="text" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailR" id="mailR" value="">
+                <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailR" id="mailR" value="" required>
                 <br />
                 <select name="sexo">
                     <option value="H">Hombre</option>
                     <option value="M">Mujer</option>
                 </select>
                 <br />
-                <input type="password" class="inputg" placeholder="Contraseña" data-clear-btn="true" name="passR" id="pass1"  value="">
+                <input type="password" class="inputg" placeholder="Contraseña" data-clear-btn="true" name="passR" id="pass1"  value="" required>
                 <br />
-                <input type="password" class="inputg" placeholder="Confirma tu contraseña" data-clear-btn="true" name="passR2" id="pass2"  value="">
+                <input type="password" class="inputg" placeholder="Confirma tu contraseña" data-clear-btn="true" name="passR2" id="pass2"  value="" required>
                 <br />
                 <select id="tipoR" name="tipoR">
                         <option value="doctores">Doctor</option>
@@ -114,7 +114,7 @@
             <label class="hola">Pagos</label>  
           </td>
           <td >
-            <center><a href="#conf"  data-transition="fade"><img src="img/conf.png" width="60" height="60"></a></center>
+            <center><a href="#confp"  data-transition="fade"><img src="img/conf.png" width="60" height="60"></a></center>
             <label class="hola">Configuración</label>  
           </td>
         </tr>
@@ -149,7 +149,7 @@
             <label class="hola">Agenda</label>  
           </td>
           <td >
-            <center><a href="#conf"  data-transition="fade"><img src="img/conf.png" width="60" height="60"></a></center>
+            <center><a href="#confd"  data-transition="fade"><img src="img/conf.png" width="60" height="60"></a></center>
             <label class="hola">Configuración</label>  
           </td>
         </tr>
@@ -309,18 +309,18 @@
                 <a class="changeI" id="CIP"  data-role="button" data-icon="plus" data-iconpos="notext">Delete</a>
             </div>
         <input data-role="none" type="file" name="fotoP" id="fotoP"/>
-        <input type="text" class="inputg" placeholder="Nombre" data-clear-btn="true" name="nombreU" id="nombreU" value="">
+        <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="nombreU" id="nombreU" value="" required>
         <br />
-        <input type="text" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailU" id="mailU" value="">
+        <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailU" id="mailU" value="" required>
         <br />
-        <input type="text" class="inputg" placeholder="Teléfono" data-clear-btn="true" name="telU" id="telU" value="">
+        <input type="text" class="inputg numval" placeholder="Teléfono" data-clear-btn="true" name="telU" id="telU" maxlength="10" value="" required>
         <br />
         <select name="sexoU" id="sexoU">
         	<option value="H">Hombre</option>
         	<option value="M">Mujer</option>
         </select>
         <br />
-        <select name="ecU" id="ecU">
+        <select name="ecU" id="ecU" required>
         	<option value="Soltero">Soltero(a)</option>
         	<option value="Comprometido">Comprometido(a)</option>
         	<option value="Casado">Casado(a)</option>
@@ -329,7 +329,7 @@
         </select>
         <br />
         <label>Edad</label>
-        <input type="text" class="inputg" placeholder="Edad" data-clear-btn="true" name="edadU" id="edadU" value="">
+        <input type="number" class="inputg" placeholder="Edad" data-clear-btn="true" name="edadU" id="edadU" value="" required>
         <br />
         <label>Antecedentes heredo familiares</label>
         <textarea name="ahf" id="ahf"></textarea>
@@ -400,14 +400,35 @@
     </div>
 </div>
 
-<!-- configuración final -->
-<div data-role="page" id="conf">
+<!-- configuración final paciente -->
+<div data-role="page" id="confp">
+    <div data-role="header" class="toph-p">
+        <h2 >&nbsp;</h2>
+        <a href="#menu" data-role="none" class="rheader2 ui-btn-left" data-transition="slidedown" >&lsaquo; Menú</a>
+    </div>
     <div style="margin-top: 2cm">
         <h2 class="regt">Configuración</h2>
         <div class="ui-content shadowu">
             <center>
-                <input  type="button" class="gbutton close sched"  data-role="none" value="Cerrar Sesión"><br><br>
                 <a class="gbutton sched" href="#profileP"> Modificar Perfil</a><br><br>
+                <input  type="button" class="gbutton close sched"  data-role="none" value="CERRAR SESIÓN"><br><br>
+            </center>
+        </div>
+    </div>
+</div>
+
+<!-- configuración final doctor -->
+<div data-role="page" id="confd">
+    <div data-role="header" class="toph-p">
+        <h2 >&nbsp;</h2>
+        <a href="#menuD" data-role="none" class="rheader2 ui-btn-left" data-transition="slidedown" >&lsaquo; Menú</a>
+    </div>
+    <div style="margin-top: 2cm">
+        <h2 class="regt">Configuración</h2>
+        <div class="ui-content shadowu">
+            <center>
+                <a class="gbutton sched" href="#profileD"> Modificar Perfil</a><br><br>
+                <input  type="button" class="gbutton close sched"  data-role="none" value="Cerrar Sesión"><br><br>
             </center>
         </div>
     </div>
@@ -864,6 +885,7 @@
     <script type="text/javascript" src="js/inputmask.date.extensions.js"></script>
     <script type="text/javascript" src="js/maps.js"></script>
     <script type="text/javascript" src="js/operations.js"></script>
+    <script type="text/javascript" src="js/vals.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
