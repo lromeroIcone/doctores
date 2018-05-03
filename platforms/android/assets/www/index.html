@@ -76,8 +76,8 @@
                 <input type="password" class="inputg" placeholder="Confirma tu contraseña" data-clear-btn="true" name="passR2" id="pass2"  value="" required>
                 <br />
                 <select id="tipoR" name="tipoR">
-                        <option value="doctores">Doctor</option>
-                        <option value="pacientes">Paciente</option>
+                    <option value="doctores">Doctor</option>
+                    <option value="pacientes">Paciente</option>
                 </select>
                 <br />
                 <center><input  type="submit" class="gbutton sched"  data-role="none" value="Aceptar"></center>
@@ -169,13 +169,13 @@
         <ul class="option-tools items-3">
                 <li><a href="#profileD" data-transition="slide" class="normal-a active">Datos Personales</a></li>
                 <li><a href="#estudios" data-transition="slide" class="normal-a ">Estudios</a></li>
-                <li><a href="#consultorio" class="normal-a">Consultorio</a></li>
+                <li><a href="#consultorio" data-transition="slide" class="normal-a">Consultorio</a></li>
         </ul>
 
         <form id="datosdForm" >
             <div class="profileI">
-                <img id="docP" class="profileimg" src="img/logo.jpg" ></img>
-                <a class="changeI" id="CID"  data-role="button" data-icon="plus" data-iconpos="notext">Delete</a>
+                <img id="docP" class="profileimg" src="img/logo.jpg">
+                <a class="changeI" id="CID" data-role="button" data-icon="plus" data-iconpos="notext">Delete</a>
             </div>
             <input data-role="none" type="file" name="fotoD" id="fotoD"/>
             <input type="text" class="inputg" placeholder="Nombre" data-clear-btn="true" name="nombreD" id="nombreD" value="">
@@ -203,7 +203,7 @@
         <ul class="option-tools items-3">
                 <li><a href="#profileD" data-transition="slide" class="normal-a">Datos Personales</a></li>
                 <li><a href="#estudios" data-transition="slide" class="normal-a  active">Estudios</a></li>
-                <li><a href="#" class="normal-a">Consultorio</a></li>
+                <li><a href="#consultorio" data-transition="slide" class="normal-a">Consultorio</a></li>
         </ul>
 	
         <form id="datoseForm" >
@@ -242,43 +242,43 @@
     <div data-role="main" class="ui-content calcont">
         <ul class="option-tools items-3">
             <li><a href="#profileD" data-transition="slide" class="normal-a">Datos Personales</a></li>
-            <li><a href="#estudios" data-transition="slide" class="normal-a  active">Estudios</a></li>
-            <li><a href="#" class="normal-a">Consultorio</a></li>
+            <li><a href="#estudios" data-transition="slide" class="normal-a">Estudios</a></li>
+            <li><a href="#" data-transition="slide" class="normal-a  active">Consultorio</a></li>
         </ul><br><br>
         <center><h1>Consultorios</h1></center>
-        <form id="datoseForm" >
+        <form id="datoscForm" >
             <label class="bluel">Calle</label>
-            <input type="text" class="inputg" placeholder="Especialidad" data-clear-btn="true" name="espD" id="espD" value="">
+            <input type="text" class="inputg" placeholder="Especialidad" data-clear-btn="true" name="calC" id="calC" value="">
             <br />
             <label class="bluel"># Exterior</label>
-            <input type="text" class="inputg" placeholder="Universidad" data-clear-btn="true" name="uniD" id="uniD" value="">
+            <input type="text" class="inputg" placeholder="Universidad" data-clear-btn="true" name="extC" id="extC" value="">
             <br />
             <label class="bluel"># Interior</label>
-            <input type="text" class="inputg" placeholder="Universidad" data-clear-btn="true" name="uniD" id="uniD" value="">
+            <input type="text" class="inputg" placeholder="Universidad" data-clear-btn="true" name="intC" id="intC" value="">
             <br />
             <label class="bluel">Colonia</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="colC" id="colC" value="">
             <br />
             <label class="bluel">Ciudad</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="ciuC" id="ciuC" value="">
             <br />
             <label class="bluel">Municipio</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="munC" id="munC" value="">
             <br />
             <label class="bluel">Estado</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="estC" id="estC" value="">
             <br />
             <label class="bluel">Código Postal</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="copC" id="copC" value="">
             <br />
             <label class="bluel">Celular</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="celC" id="celC" value="">
             <br />
             <label class="bluel">Teléfono Consultorio</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="conC" id="conC" value="">
             <br />
             <label class="bluel">Teléfono Emergencias</label>
-            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="cedD" id="cedD" value="">
+            <input type="text" class="inputg" placeholder="Cédula Profesional" data-clear-btn="true" name="emeC" id="emeC" value="">
             <br />
             <center><input  type="submit" class="gbutton sched"  data-role="none" value="Guardar"></center>
         </form>
@@ -305,7 +305,7 @@
 	
         <form id="datosForm" >
             <div class="profileI">
-                <img id="pacP" class="profileimg" src="img/logo.jpg" ></img>
+                <img id="pacP" class="profileimg" src="img/logo.jpg" >
                 <a class="changeI" id="CIP"  data-role="button" data-icon="plus" data-iconpos="notext">Delete</a>
             </div>
         <input data-role="none" type="file" name="fotoP" id="fotoP"/>

@@ -195,22 +195,19 @@ function checkC(){
         type: "POST",
         data: {idm:idm,},
         success: function(data){
+            var obj = jQuery.parseJSON(data);
+            var exp =obj[0][3];
 
-                var obj = jQuery.parseJSON(data);
-                var exp =obj[0][3];
-
-                        $("#uniD").val(obj[0][1]);
-                        $("#espD").val(obj[0][0]);
-                        $("#cedD").val(obj[0][2]);
-                for(var i =0;i<exp.length;i++){
-                        $("#expL").append("<li><div class='edate'>"+exp[i][0]+"</div> <div class='edesc'>"+exp[i][1]+". "+exp[i][2]+"</div></li>")
-                }
-
-
+            $("#uniD").val(obj[0][1]);
+            $("#espD").val(obj[0][0]);
+            $("#cedD").val(obj[0][2]);
+            for(var i =0;i<exp.length;i++){
+                    $("#expL").append("<li><div class='edate'>"+exp[i][0]+"</div> <div class='edesc'>"+exp[i][1]+". "+exp[i][2]+"</div></li>")
+            }
         },
         error: function(data){
-                        $.mobile.loading("hide");
-                        swal("Error","Revisa tu conexión e intentalo de nuevo","error");
+            $.mobile.loading("hide");
+            swal("Error","Revisa tu conexión e intentalo de nuevo","error");
         }
     });
 }
@@ -656,70 +653,56 @@ $('#modalD').iziModal('open');
     }
     
     function updateDD(){
-    var form = new FormData($("#datosdForm")[0]);
-    form.append("userm",localStorage.getItem("usi"));
-    $.ajax({
-	url: "http://www.icone-solutions.com/doct/sqlOP.php",
-	type: "POST",
-	data: form,
-	contentType: false,
-	cache: false,
-	processData:false,
-	success: function(data){
-	    if(data.toString()=="1"){
-	    	
-	    	
-            swal("Listo","Tus datos han sido modificados.","success");
-           
-
-	    }else{
-	    	
-	    	
-	    	
-           swal("Error","No se han podido modificar tus datos, revisa tu conexión e intentalo de nuevo","error");
-	    }
-	   
-	},
-
-	error: function(){
+        var form = new FormData($("#datosdForm")[0]);
+        form.append("userm",localStorage.getItem("usi"));
+        $.ajax({
+            url: "http://www.icone-solutions.com/doct/sqlOP.php",
+            type: "POST",
+            data: form,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(data){
+                if(data.toString()=="1"){
+                    swal("Listo","Tus datos han sido modificados.","success");
+                }else{
+                    swal("Error","No se han podido modificar tus datos, revisa tu conexión e intentalo de nuevo","error");
+                }
+            },
+            error: function(){
 		swal("Error","Actualmente tu dispositivo no cuenta con una conexión a internet","error");
-	}
-
+            }
         });
     }
+    
     function updateDE(){
-    var form = new FormData($("#datoseForm")[0]);
-    form.append("userm",localStorage.getItem("usi"));
-    $.ajax({
-	url: "http://www.icone-solutions.com/doct/sqlOP.php",
-	type: "POST",
-	data: form,
-	contentType: false,
-	cache: false,
-	processData:false,
-	success: function(data){
-	    if(data.toString()=="1"){
-	    	
-	    	var nl = $("#expD").val().split("/");
-	    	$("#expL").append("<li><div class='edate'>"+nl[0]+"</div> <div class='edesc'>"+nl[1]+". "+nl[2]+"</div></li>")
-            swal("Listo","Tus datos han sido modificados.","success");
-           
-
-	    }else{
-	    	
-	    	
-	    	
-           swal("Error","No se han podido modificar tus datos, revisa tu conexión e intentalo de nuevo","error");
-	    }
-	   
-	},
-
-	error: function(){
+        var form = new FormData($("#datoseForm")[0]);
+        form.append("userm",localStorage.getItem("usi"));
+        $.ajax({
+            url: "http://www.icone-solutions.com/doct/sqlOP.php",
+            type: "POST",
+            data: form,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(data){
+                if(data.toString()=="1"){
+                    var nl = $("#expD").val().split(" ");
+                    //console.log($("#expD").val());
+                    $("#expL").append("<li><div class='edate'>"+nl[0]+"</div> <div class='edesc'>"+nl[1]+". "+nl[2]+"</div></li>");
+                    swal("Listo","Tus datos han sido modificados.","success");
+                }else{
+                    swal("Error",data.toString(),"error");
+                    //swal("Error","No se han podido modificar tus datos, revisa tu conexión e intentalo de nuevo","error");
+                }
+            },
+            error: function(){
 		swal("Error","Actualmente tu dispositivo no cuenta con una conexión a internet","error");
-	}
+            }
 
         });
     }
+    
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -808,20 +791,19 @@ function register(){
 	cache: false,
 	processData:false,
 	success: function(data){
+            console.log(data);
 	    if(!isNaN(data)){
-            var datos = data.toString().split(",");
-            if($("#tipoR").val()=="pacientes"){
-                    localStorage.setItem("tipo","pac");
-            }else{
-                    localStorage.setItem("tipo","doc");
-            }
-            swal("Listo","Tu usuario ha sido registrado exitosamente.","success");
-            localStorage.setItem("user",$("#mailR").val());
-            localStorage.setItem("usi",data.toString());
-            
-            $.mobile.navigate( "#menu", { transition : "slide",info: "info about the #foo hash" });
+                var datos = data.toString().split(",");
+                if($("#tipoR").val()=="pacientes"){
+                        localStorage.setItem("tipo","pac");
+                }else{
+                        localStorage.setItem("tipo","doc");
+                }
+                swal("Listo","Tu usuario ha sido registrado exitosamente.","success");
+                localStorage.setItem("user",$("#mailR").val());
+                localStorage.setItem("usi",data.toString());
 
-
+                $.mobile.navigate( "#menu", { transition : "slide",info: "info about the #foo hash" });
 	    }else{
                 //swal("Error",data.toString(),"error");
                 swal("Error","Este usuario ya ha sido registrado.","error");
@@ -960,17 +942,17 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
         $("#modalP .iziModal-content .icon-close").attr('style', '');
     }
 });
-	$(function() {
-    $("#expD").inputmask({
-    mask: "9999 / *{1,256} / *{1,256}",
-    greedy: false,
-     validator: "[A-Za-z0-9 ]"
-    
-  });
-                $("#card").inputmask("9999 9999 9999 9999", {"placeholder": "0000 0000 0000 0000"});
-                $("#cvv").inputmask("999", {"placeholder": "000"});
-               $("#expdate").inputmask("99/9999", {"placeholder": "mm/aaaa"});
-                $("[data-mask]").inputmask();
+    $(function() {
+        /*$("#expD").inputmask({
+            mask: "9999 / *{1,256} / *{1,256}",
+            greedy: false,
+            validator: "[A-Za-z0-9 ]"
+        });*/
+        $("#expD").inputmask("9999 *{1,256} *{1,256}", {"placeholder": "aaaa cargo institucion"});
+        $("#card").inputmask("9999 9999 9999 9999", {"placeholder": "0000 0000 0000 0000"});
+        $("#cvv").inputmask("999", {"placeholder": "000"});
+        $("#expdate").inputmask("99/9999", {"placeholder": "mm/aaaa"});
+        $("[data-mask]").inputmask();
 
      });
     document.addEventListener("backbutton", function(e){
@@ -1111,6 +1093,9 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
     $("#CIP").click(function(){
        $("#fotoP").click();
     });
+    $("#CID").click(function(){
+       $("#fotoD").click();
+    });
     $("#elabi").click(function(){
        $("#elab").click();
     });
@@ -1183,7 +1168,7 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
    $("#datosdForm").submit(function(e){
     	e.preventDefault();
 	
-	    swal({
+        swal({
           title: "¿Estás seguro que tus datos son correctos?",
           text: "",
           type: "info",
