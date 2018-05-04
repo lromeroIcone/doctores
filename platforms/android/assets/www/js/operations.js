@@ -677,9 +677,11 @@ $('#modalD').iziModal('open');
             processData:false,
             success: function(data){
                 if(data.toString()=="1"){
-                    var nl = $("#expD").val().split(" ");
-                    //console.log($("#expD").val());
-                    $("#expL").append("<li><div class='edate'>"+nl[0]+"</div> <div class='edesc'>"+nl[1]+". "+nl[2]+"</div></li>");
+                    if($("#expD").val()!=''){
+                        var nl = $("#expD").val().split(" ");
+                        //console.log($("#expD").val());
+                        $("#expL").append("<li><div class='edate'>"+nl[0]+"</div> <div class='edesc'>"+nl[1]+". "+nl[2]+"</div></li>");
+                    }
                     swal("Listo","Tus datos han sido modificados.","success");
                 }else{
                     swal("Error",data.toString(),"error");
@@ -799,10 +801,14 @@ function register(){
 
                     $.mobile.navigate( "#menuD", { transition : "slide",info: "info about the #foo hash" });
                 }
-	    }else{
+	    } else if(data.toString()=="Error"){
                 //swal("Error",data.toString(),"error");
                 swal("Error","Este usuario ya ha sido registrado.","error");
-	    }
+	    } else if(data.toString()=="Error1"){
+                swal("Error","Este usuario ya ha sido registrado como doctor.","error");
+            } else if(data.toString()=="Error2"){
+                swal("Error","Este usuario ya ha sido registrado como paciente.","error");
+            }
 	    $("#rega").prop("disabled",false);
         },
         error: function(){
