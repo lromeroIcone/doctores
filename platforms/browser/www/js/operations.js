@@ -943,7 +943,7 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
             greedy: false,
             validator: "[A-Za-z0-9 ]"
         });*/
-        $("#expD").inputmask("9999 *{1,256} *{1,256}", {"placeholder": "aaaa cargo institucion"});
+        $("#expD").inputmask("9999 *{1,256} *{1,256}", {"placeholder": "aaaa / cargo / institucion"});
         $("#card").inputmask("9999 9999 9999 9999", {"placeholder": "0000 0000 0000 0000"});
         $("#cvv").inputmask("999", {"placeholder": "000"});
         $("#expdate").inputmask("99/9999", {"placeholder": "mm/aaaa"});
