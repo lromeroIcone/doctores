@@ -159,27 +159,26 @@ function checkC(){
 	data: {idu:idu,datat:datat},
 	success: function(data){
 		
-		var obj = jQuery.parseJSON(data);
-		datosp =obj;
-		if(datat=="pac"){
-			$("#nombreU").val(obj[0][0]);
-			$("#mailU").val(obj[0][1]);
-			$("#telU").val(obj[0][2]);
-			$("#sexoU").val(obj[0][3]);
-			$("#ecU").val(obj[0][4]);
-			$("#edadU").val(obj[0][5]);
-			$("#pacP").attr("src","http://icone-solutions.com/doct/img/"+obj[0][6]);
-			$('#sexoU').selectmenu('refresh', true);
-			$('#ecU').selectmenu('refresh', true);
-		}else{
-			$("#nombreD").val(obj[0][0]);
-			$("#mailD").val(obj[0][1]);
-			$("#telD").val(obj[0][2]);
-			
-			$("#docP").attr("src","http://icone-solutions.com/doct/img/"+obj[0][3]);
-		}
-		
-		
+            var obj = jQuery.parseJSON(data);
+            datosp =obj;
+            if(datat=="pac"){
+                $("#nombreU").val(obj[0][0]);
+                $("#mailU").val(obj[0][1]);
+                $("#telU").val(obj[0][2]);
+                $("#sexoU").val(obj[0][3]);
+                $("#ecU").val(obj[0][4]);
+                $("#edadU").val(obj[0][5]);
+                $("#pacP").attr("src","http://icone-solutions.com/doct/img/"+obj[0][6]);
+                $('#sexoU').selectmenu('refresh', true);
+                $('#ecU').selectmenu('refresh', true);
+            }else{
+                $("#nombreD").val(obj[0][0]);
+                $("#mailD").val(obj[0][1]);
+                $("#telD").val(obj[0][2]);
+
+                $("#docP").attr("src","http://icone-solutions.com/doct/img/"+obj[0][3]);
+            }
+	
 	},
 	error: function(data){
 	              	$.mobile.loading("hide");
@@ -1112,7 +1111,27 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
         readURL(this);
     });
    
-   $("#regForm").submit(function(e){
+    $('#regForm').find('input[type=email]').blur(function(){
+        caracteresCorreoValido($(this).val(), '#xmail')
+    });
+    
+    // funcion para validar el correo
+    function caracteresCorreoValido(email, div){
+        console.log(email);
+        //var email = $(email).val();
+        var caract = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+        console.log(caract.test(email));
+        if (caract.test(email) == false){
+            $(div).hide().removeClass('hide').slideDown('fast');
+            return false;
+        }else{
+            $(div).hide().addClass('hide').slideDown('slow');
+    //        $(div).html('');
+            return true;
+        }
+    }
+   
+    $("#regForm").submit(function(e){
     	e.preventDefault();
     	 var empty = $(this).find("input").filter(function() {
 

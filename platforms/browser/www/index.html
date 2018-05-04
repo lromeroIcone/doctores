@@ -64,7 +64,8 @@
             <form id="regForm" >
                 <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="userR" id="nombre" value="" required>
                 <br />
-                <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailR" id="mailR" value="" required>
+                <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailR" id="mailR" value="" data-validation="email" required>
+                <div id="xmail" class="hide"><h6 class="text-danger">Ingresa un email valido</h6></div>
                 <br />
                 <select name="sexo">
                     <option value="H">Hombre</option>
