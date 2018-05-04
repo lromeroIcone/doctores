@@ -785,15 +785,20 @@ function register(){
 	    if(!isNaN(data)){
                 var datos = data.toString().split(",");
                 if($("#tipoR").val()=="pacientes"){
-                        localStorage.setItem("tipo","pac");
-                }else{
-                        localStorage.setItem("tipo","doc");
-                }
-                swal("Listo","Tu usuario ha sido registrado exitosamente.","success");
-                localStorage.setItem("user",$("#mailR").val());
-                localStorage.setItem("usi",data.toString());
+                    localStorage.setItem("tipo","pac");
+                    swal("Listo","Tu usuario ha sido registrado exitosamente.","success");
+                    localStorage.setItem("user",$("#mailR").val());
+                    localStorage.setItem("usi",data.toString());
 
-                $.mobile.navigate( "#menu", { transition : "slide",info: "info about the #foo hash" });
+                    $.mobile.navigate( "#menu", { transition : "slide",info: "info about the #foo hash" });
+                }else{
+                    localStorage.setItem("tipo","doc");
+                    swal("Listo","Tu usuario ha sido registrado exitosamente.","success");
+                    localStorage.setItem("user",$("#mailR").val());
+                    localStorage.setItem("usi",data.toString());
+
+                    $.mobile.navigate( "#menuD", { transition : "slide",info: "info about the #foo hash" });
+                }
 	    }else{
                 //swal("Error",data.toString(),"error");
                 swal("Error","Este usuario ya ha sido registrado.","error");
