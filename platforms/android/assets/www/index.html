@@ -181,7 +181,7 @@
             <input data-role="none" type="file" name="fotoD" id="fotoD"/>
             <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="nombreD" id="nombreD" value="">
             <br />
-            <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailD" id="mailD" value="" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="El formato debe ser de la forma: ejemplo@ejemplo.com">
+            <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailD" id="mailD" value="" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" title="El formato debe ser de la forma: ejemplo@ejemplo.com">
             <br />
             <input type="text" class="inputg numval" placeholder="Teléfono" data-clear-btn="true" name="telD" id="telD" value="">
             <br />
@@ -312,7 +312,7 @@
         <input data-role="none" type="file" name="fotoP" id="fotoP"/>
         <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="nombreU" id="nombreU" value="" required>
         <br />
-        <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailU" id="mailU" value="" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="El formato debe ser de la forma: ejemplo@ejemplo.com" required>
+        <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailU" id="mailU" value="" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$" title="El formato debe ser de la forma: ejemplo@ejemplo.com" required>
         <br />
         <input type="text" class="inputg numval" placeholder="Teléfono" data-clear-btn="true" name="telU" id="telU" maxlength="10" value="" required>
         <br />
@@ -330,7 +330,7 @@
         </select>
         <br />
         <label>Edad</label>
-        <input type="number" class="inputg" placeholder="Edad" data-clear-btn="true" name="edadU" id="edadU" value="" required>
+        <input type="number" class="inputg" placeholder="Edad" data-clear-btn="true" name="edadU" id="edadU" value="" min="1" required>
         <br />
         <label>Antecedentes heredo familiares</label>
         <textarea name="ahf" id="ahf"></textarea>

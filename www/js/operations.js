@@ -619,35 +619,25 @@ $('#modalD').iziModal('open');
         });
     }
     function updateD(){
-    var form = new FormData($("#datosForm")[0]);
-    form.append("userm",localStorage.getItem("usi"));
-    $.ajax({
-	url: "http://www.icone-solutions.com/doct/sqlOP.php",
-	type: "POST",
-	data: form,
-	contentType: false,
-	cache: false,
-	processData:false,
-	success: function(data){
-	    if(data.toString()=="1"){
-	    	
-	    	
-            swal("Listo","Tus datos han sido modificados.","success");
-           
-
-	    }else{
-	    	
-	    	
-	    	
-           swal("Error","No se han podido modificar tus datos, revisa tu conexión e intentalo de nuevo","error");
-	    }
-	   
-	},
-
-	error: function(){
+        var form = new FormData($("#datosForm")[0]);
+        form.append("userm",localStorage.getItem("usi"));
+        $.ajax({
+            url: "http://www.icone-solutions.com/doct/sqlOP.php",
+            type: "POST",
+            data: form,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(data){
+                if(data.toString()=="1"){
+                    swal("Listo","Tus datos han sido modificados.","success");
+                }else{
+                    swal("Error","No se han podido modificar tus datos, revisa tu conexión e intentalo de nuevo","error");
+                }
+            },
+            error: function(){
 		swal("Error","Actualmente tu dispositivo no cuenta con una conexión a internet","error");
-	}
-
+            }
         });
     }
     
@@ -1147,45 +1137,71 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
    });
    $("#datosForm").submit(function(e){
     	e.preventDefault();
-	
-	    swal({
-          title: "¿Estás seguro que tus datos son correctos?",
-          text: "",
-          type: "info",
-          showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Aceptar",
-          showLoaderOnConfirm: true,
-          closeOnConfirm: false,
-          cancelButtonText: "Cancelar",
-        },
-        function(isConfirm){
-	        if(isConfirm){
- 	         updateD();
-            }
-         });
-   });
+	if(validaP()){
+            swal({
+                title: "¿Estás seguro que tus datos son correctos?",
+                text: "",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Aceptar",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false,
+                cancelButtonText: "Cancelar",
+            },
+            function(isConfirm){
+                if(isConfirm){
+                    updateD();
+                }
+            });
+        }
+    });
+    
+    function validaP(){
+        if($('#nombreU').val()==''){
+            swal("Error","El nombre no puede estar vacío.","error");
+        } else if($('#mailU').val()==''){
+            swal("Error","El correo no puede estar vacío.","error");
+        } else if($('#telU').val()==''){
+            swal("Error","El telefono no puede estar vacío.","error");
+        } else{
+            return true;
+        }
+    }
   
    $("#datosdForm").submit(function(e){
     	e.preventDefault();
-	
-        swal({
-          title: "¿Estás seguro que tus datos son correctos?",
-          text: "",
-          type: "info",
-          showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Aceptar",
-          showLoaderOnConfirm: true,
-          closeOnConfirm: false,
-          cancelButtonText: "Cancelar",
-        },
-        function(isConfirm){
-	        if(isConfirm){
- 	         updateDD();
-            }
-         });
+	if(validac()){
+            swal({
+              title: "¿Estás seguro que tus datos son correctos?",
+              text: "",
+              type: "info",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Aceptar",
+              showLoaderOnConfirm: true,
+              closeOnConfirm: false,
+              cancelButtonText: "Cancelar",
+            },
+            function(isConfirm){
+                    if(isConfirm){
+                     updateDD();
+                }
+             });
+        }
    });
+   
+   function validac(){
+       if($('#nombreD').val()==""){
+           swal("Error","El nombre no puede estar vacío.","error");
+       } else if($('#mailD').val()==""){
+           swal("Error","El correo no puede estar vacío.","error");
+       } else if($('#telD').val()==""){
+           swal("Error","El teléfono no puede estar vacío","error");
+       } else{
+           return true;
+       }
+   }
    
    $("#datoseForm").submit(function(e){
     	e.preventDefault();
