@@ -1112,37 +1112,18 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
         readURL(this);
     });
    
-    $('#regForm').find('input[type=email]').blur(function(){
-        caracteresCorreoValido($(this).val(), '#xmail')
-    });
-    
-    // funcion para validar el correo
-    function caracteresCorreoValido(email, div){
-        console.log(email);
-        //var email = $(email).val();
-        var caract = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
-        console.log(caract.test(email));
-        if (caract.test(email) == false){
-            $(div).hide().removeClass('hide').slideDown('fast');
-            return false;
-        }else{
-            $(div).hide().addClass('hide').slideDown('slow');
-    //        $(div).html('');
-            return true;
-        }
-    }
-   
+      
     $("#regForm").submit(function(e){
     	e.preventDefault();
-    	 var empty = $(this).find("input").filter(function() {
+        var empty = $(this).find("input").filter(function() {
 
-        return this.value === "";
+            return this.value === "";
         
-    });
-    if(empty.length==0){
+        });
+        if(empty.length==0){
 	    if($("#pass1").val()==$("#pass2").val()){
 	    swal({
-          title: "¿Estás seguro que tus datos son correctos?",
+            title: "¿Estás seguro que tus datos son correctos?",
           text: "",
           type: "info",
           showCancelButton: true,

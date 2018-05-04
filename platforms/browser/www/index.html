@@ -64,7 +64,7 @@
             <form id="regForm" >
                 <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="userR" id="nombre" value="" required>
                 <br />
-                <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailR" id="mailR" value="" data-validation="email" required>
+                <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailR" id="mailR" value="" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="El formato debe ser de la forma: ejemplo@ejemplo.com" required>
                 <div id="xmail" class="hide"><h6 class="text-danger">Ingresa un email valido</h6></div>
                 <br />
                 <select name="sexo">
@@ -168,9 +168,9 @@
 
     <div data-role="main" class="ui-content calcont">
         <ul class="option-tools items-3">
-                <li><a href="#profileD" data-transition="slide" class="normal-a active">Datos Personales</a></li>
-                <li><a href="#estudios" data-transition="slide" class="normal-a ">Estudios</a></li>
-                <li><a href="#consultorio" data-transition="slide" class="normal-a">Consultorio</a></li>
+            <li><a href="#profileD" data-transition="slide" class="normal-a active">Datos Personales</a></li>
+            <li><a href="#estudios" data-transition="slide" class="normal-a ">Estudios</a></li>
+            <li><a href="#consultorio" data-transition="slide" class="normal-a">Consultorio</a></li>
         </ul>
 
         <form id="datosdForm" >
@@ -179,11 +179,11 @@
                 <a class="changeI" id="CID" data-role="button" data-icon="plus" data-iconpos="notext">Delete</a>
             </div>
             <input data-role="none" type="file" name="fotoD" id="fotoD"/>
-            <input type="text" class="inputg" placeholder="Nombre" data-clear-btn="true" name="nombreD" id="nombreD" value="">
+            <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="nombreD" id="nombreD" value="">
             <br />
-            <input type="text" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailD" id="mailD" value="">
+            <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailD" id="mailD" value="" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="El formato debe ser de la forma: ejemplo@ejemplo.com">
             <br />
-            <input type="text" class="inputg" placeholder="Teléfono" data-clear-btn="true" name="telD" id="telD" value="">
+            <input type="text" class="inputg numval" placeholder="Teléfono" data-clear-btn="true" name="telD" id="telD" value="">
             <br />
             <center><input  type="submit" class="gbutton sched"  data-role="none" value="Guardar"></center>
         </form>
@@ -312,7 +312,7 @@
         <input data-role="none" type="file" name="fotoP" id="fotoP"/>
         <input type="text" class="inputg nameval" placeholder="Nombre" data-clear-btn="true" name="nombreU" id="nombreU" value="" required>
         <br />
-        <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailU" id="mailU" value="" required>
+        <input type="email" class="inputg" placeholder="Correo" data-clear-btn="true" name="mailU" id="mailU" value="" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="El formato debe ser de la forma: ejemplo@ejemplo.com" required>
         <br />
         <input type="text" class="inputg numval" placeholder="Teléfono" data-clear-btn="true" name="telU" id="telU" maxlength="10" value="" required>
         <br />
