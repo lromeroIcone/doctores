@@ -654,6 +654,7 @@ $('#modalD').iziModal('open');
     function updateDD(){
         var form = new FormData($("#datosdForm")[0]);
         form.append("userm",localStorage.getItem("usi"));
+        
         $.ajax({
             url: "http://www.icone-solutions.com/doct/sqlOP.php",
             type: "POST",
