@@ -211,7 +211,7 @@ function checkC(){
     });
 }
  
- function getCD(){
+ /*function getCD(){
     var idu = localStorage.getItem("usi");
     var op = 2;
 
@@ -246,7 +246,7 @@ function checkC(){
             swal("Error","Revisa tu conexión e intentalo de nuevo","error");
         }
     });
- }
+ }*/
  
  var citap=0;
  var fechap="";
@@ -665,6 +665,32 @@ $('#modalD').iziModal('open');
         });
     }
     
+    function updateCD(){
+        var form = new FormData($("#datoscForm")[0]);
+        form.append("userm",localStorage.getItem("usi"));
+        
+        $.ajax({
+            url: "http://www.icone-solutions.com/doct/sqlOP.php",
+            type: "POST",
+            data: form,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(data){
+                console.log(data);
+                if(data.toString()=="1"){
+                    swal("Listo","Tus datos han sido guardados.","success");
+                }else{
+                    //swal("Error","No se han podido modificar tus datos, revisa tu conexión e intentalo de nuevo","error");
+                    swal("Error",data.toString(),"error");
+                }
+            },
+            error: function(){
+		swal("Error","Actualmente tu dispositivo no cuenta con una conexión a internet","error");
+            }
+        });
+    }
+    
     function updateDE(){
         var form = new FormData($("#datoseForm")[0]);
         form.append("userm",localStorage.getItem("usi"));
@@ -1007,9 +1033,9 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
          getPD();
          getED();
       });
-      $( '#consultorio' ).on( 'pageshow',function(event){
-         getCD();
-      });
+      /*$( '#consultorio' ).on( 'pageshow',function(event){
+         //getCD();
+      });*/
       $( '#patient_list' ).on( 'pagebeforeshow',function(event){
       
         
@@ -1200,6 +1226,28 @@ $("#modalP, #modalD").on('click', 'header a', function(event) {
                 }
              });
         }
+   });
+   
+   $("#datoscForm").submit(function(e){
+    	e.preventDefault();
+	//if(validac()){
+            swal({
+              title: "¿Estás seguro que tus datos son correctos?",
+              text: "",
+              type: "info",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Aceptar",
+              showLoaderOnConfirm: true,
+              closeOnConfirm: false,
+              cancelButtonText: "Cancelar",
+            },
+            function(isConfirm){
+                    if(isConfirm){
+                     updateCD();
+                }
+             });
+        //}
    });
    
    function validac(){
